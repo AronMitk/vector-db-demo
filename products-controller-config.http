@@ -1,0 +1,13 @@
+### GET request to example server
+
+POST http://localhost:8080/api/admin/V3
+
+### GET request to example server
+
+DELETE http://localhost:8080/api/admin/V1
+
+### GET request to example server
+
+PUT http://localhost:8080/api/admin/V1
+
+###

@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: vector-db-demo
+  ai:
+    vectorstore:
+      qdrant:
+        host: localhost
+        port: 6334
+        collection-name: products_collection
+    embedding:
+      transformer:
+        onnx:
+          modelUri: 'https://huggingface.co/intfloat/e5-small-v2/resolve/main/model.onnx'
+        tokenizer:
+          uri: 'https://huggingface.co/intfloat/e5-small-v2/raw/main/tokenizer.json'
+          options:
+            truncation: only_first
+            maxLength: 4
+            padding: true
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: products_test_db

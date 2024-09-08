@@ -1,0 +1,39 @@
+### GET request to example server
+GET http://localhost:8080/api/v1
+Content-Type: application/json
+
+{ "page": 0, "size": 10 }
+
+
+### GET request to example server
+GET http://localhost:8080/api/v1
+Content-Type: application/json
+
+{ "query": "vitamin C", "page": 0, "size": 10 }
+
+### GET product by id
+GET http://localhost:8080/api/v1/5c4c8dfc-11d3-46f1-9f1a-e49e5fcb5bb8
+
+### POST create product
+
+POST http://localhost:8080/api/v1
+Content-Type: application/json
+
+{ "title": "first title", "description": "idk what is this" }
+
+### PUT product
+
+PUT http://localhost:8080/api/v1/ID
+Content-Type: application/json
+
+{ "title": "first title", "description": "idk what is this" }
+
+
+### DELETE all products
+
+DELETE http://localhost:8080/api/v1
+
+
+### DELETE product by ID
+
+DELETE http://localhost:8080/api/v1/5c4c8dfc-11d3-46f1-9f1a-e49e5fcb5bb8

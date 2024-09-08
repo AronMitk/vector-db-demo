@@ -1,0 +1,30 @@
+### GET request to example server
+GET http://localhost:6333/collections
+
+### GET info
+
+GET http://localhost:6333/collections/products_collection
+
+###
+POST http://localhost:6333/collections/products_collection/points/scroll
+Content-Type: application/json
+
+{
+  "limit": 100,
+  "with_payload": true,
+  "with_vector": false
+}
+
+
+###
+
+POST http://localhost:6333/collections/products_collection/points/delete
+Content-Type: application/json
+
+{ "filter": {} }
+
+
+
+####
+
+DELETE http://localhost:6333/collections/test_collection
