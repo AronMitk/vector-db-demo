@@ -73,11 +73,11 @@ class ProductsServiceV3(val client: QdrantClient, val service: EmbeddingService,
                 )
                 .get()
 
-            var map = resultsIds.map { Pair(it.id.uuid.toString(), it.score) }
+            val results = resultsIds.map { Pair(it.id.uuid.toString(), it.score) }
 
-            return repository.findAllByIdIn(map.map { it.first }, pageRequest)
-                .zip(map.map { it.second })
-                .map { Pair(it.first, it.second) }
+            return results.map {
+                Pair(repository.findById(it.first).get(), it.second)
+            }
         }
 
         return repository.findAllByIdIn(getAll().resultList.map { it.id.uuid.toString() }, pageRequest)

@@ -9,8 +9,10 @@ spring:
         collection-name: products_collection
     embedding:
       transformer:
+        #v2
         onnx:
           modelUri: 'https://huggingface.co/intfloat/e5-small-v2/resolve/main/model.onnx'
+        #v3
         tokenizer:
           uri: 'https://huggingface.co/intfloat/e5-small-v2/raw/main/tokenizer.json'
           options:

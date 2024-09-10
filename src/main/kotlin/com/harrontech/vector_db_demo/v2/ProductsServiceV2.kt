@@ -32,6 +32,14 @@ class ProductsServiceV2(val vectorStore: VectorStore, val repository: ProductRep
         TODO("Not yet implemented")
     }
 
+    private fun returnAll(query: QueryRequest, pageRequest: PageRequest): List<Pair<Product, Float>> {
+        val ids = vectorStore.similaritySearch(SearchRequest.defaults()
+            .withTopK(query.size * query.page + query.size))
+            .map { it.id }
+        return repository.findAllByIdIn(ids, pageRequest)
+            .map { Pair(it, -1f) }
+    }
+
     override fun getByQueryWithPoints(query: QueryRequest): List<Pair<Product, Float>> {
         val pageRequest = PageRequest.of(query.page, query.size)
 
@@ -41,17 +49,12 @@ class ProductsServiceV2(val vectorStore: VectorStore, val repository: ProductRep
                     .withTopK(query.size * query.page + query.size))
                 .map { Pair(it.id, it.metadata["distance"] as Float) }
 
-            return repository.findAllByIdIn(results.map { it.first }, pageRequest)
-                .zip(results.map { it.second })
-                .map { Pair(it.first, it.second) }
+            return results.map {
+                Pair(repository.findById(it.first).get(), it.second)
+            }
         }
 
-        val ids = vectorStore.similaritySearch(SearchRequest.defaults()
-            .withTopK(query.size * query.page + query.size))
-            .map { it.id }
-
-        return repository.findAllByIdIn(ids, pageRequest)
-            .map { Pair(it, -1f) }
+        return returnAll(query, pageRequest)
     }
 
     override fun create(request: MergeProductRequest): Product {
