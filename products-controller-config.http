@@ -4,4 +4,4 @@ POST http://localhost:8080/api/admin/V2
 
 ### DELETE database
 
-DELETE http://localhost:8080/api/admin/V1
+DELETE http://localhost:8080/api/admin/V3

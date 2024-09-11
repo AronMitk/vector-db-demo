@@ -2,7 +2,7 @@ package com.harrontech.vector_db_demo.dto
 
 import com.harrontech.vector_db_demo.Product
 
-data class MergeProductRequest(
+data class CreateProductRequest(
     val title: String,
     val description: String,
     val type: String = "Fruit"

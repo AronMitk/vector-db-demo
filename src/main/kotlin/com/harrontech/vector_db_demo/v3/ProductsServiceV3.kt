@@ -3,7 +3,7 @@ package com.harrontech.vector_db_demo.v3
 import com.harrontech.vector_db_demo.Product
 import com.harrontech.vector_db_demo.ProductRepository
 import com.harrontech.vector_db_demo.ProductsService
-import com.harrontech.vector_db_demo.dto.MergeProductRequest
+import com.harrontech.vector_db_demo.dto.CreateProductRequest
 import com.harrontech.vector_db_demo.dto.QueryRequest
 import io.qdrant.client.ConditionFactory.hasId
 import io.qdrant.client.PointIdFactory.id
@@ -84,7 +84,7 @@ class ProductsServiceV3(val client: QdrantClient, val service: EmbeddingService,
             .map { Pair(it, -1f) }
     }
 
-    override fun create(request: MergeProductRequest): Product {
+    override fun create(request: CreateProductRequest): Product {
         val productReq = request.mapTo()
 
         val embeddings: Points.Vectors? = vectors(service.createEmbedding(productReq.description))
@@ -102,7 +102,7 @@ class ProductsServiceV3(val client: QdrantClient, val service: EmbeddingService,
         return repository.save(productReq)
     }
 
-    override fun update(id: String, request: MergeProductRequest): Product {
+    override fun update(id: String, request: CreateProductRequest): Product {
         deleteById(id)
         return create(request)
     }

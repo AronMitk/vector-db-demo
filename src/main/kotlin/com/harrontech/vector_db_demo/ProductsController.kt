@@ -2,7 +2,7 @@ package com.harrontech.vector_db_demo
 
 import com.harrontech.vector_db_demo.dto.GetProductResponse
 import com.harrontech.vector_db_demo.dto.QueryRequest
-import com.harrontech.vector_db_demo.dto.MergeProductRequest
+import com.harrontech.vector_db_demo.dto.CreateProductRequest
 import com.harrontech.vector_db_demo.dto.GetPagedProductResponse
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -19,10 +19,10 @@ interface ProductsController {
     fun getByQuery(@RequestBody query: QueryRequest): GetPagedProductResponse
 
     @PostMapping
-    fun create(@RequestBody request: MergeProductRequest): GetProductResponse
+    fun create(@RequestBody request: CreateProductRequest): GetProductResponse
 
     @PutMapping("{id}")
-    fun update(@PathVariable id: String, @RequestBody request: MergeProductRequest): GetProductResponse
+    fun update(@PathVariable id: String, @RequestBody request: CreateProductRequest): GetProductResponse
 
     @DeleteMapping("{id}")
     fun deleteById(@PathVariable id: String)

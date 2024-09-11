@@ -3,7 +3,7 @@ package com.harrontech.vector_db_demo.v1
 import com.harrontech.vector_db_demo.Product
 import com.harrontech.vector_db_demo.ProductRepository
 import com.harrontech.vector_db_demo.ProductsService
-import com.harrontech.vector_db_demo.dto.MergeProductRequest
+import com.harrontech.vector_db_demo.dto.CreateProductRequest
 import com.harrontech.vector_db_demo.dto.QueryRequest
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
@@ -27,12 +27,12 @@ class ProductsServiceV1(val repository: ProductRepository): ProductsService {
         TODO("Not yet implemented")
     }
 
-    override fun create(request: MergeProductRequest): Product {
+    override fun create(request: CreateProductRequest): Product {
         val product = request.mapTo()
         return repository.save(product)
     }
 
-    override fun update(id: String, request: MergeProductRequest): Product {
+    override fun update(id: String, request: CreateProductRequest): Product {
         val product = request.mapTo(id)
         return repository.save(product)
     }

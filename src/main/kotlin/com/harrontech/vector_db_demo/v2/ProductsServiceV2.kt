@@ -3,7 +3,7 @@ package com.harrontech.vector_db_demo.v2
 import com.harrontech.vector_db_demo.Product
 import com.harrontech.vector_db_demo.ProductRepository
 import com.harrontech.vector_db_demo.ProductsService
-import com.harrontech.vector_db_demo.dto.MergeProductRequest
+import com.harrontech.vector_db_demo.dto.CreateProductRequest
 import com.harrontech.vector_db_demo.dto.QueryRequest
 import org.springframework.ai.document.Document
 import org.springframework.ai.vectorstore.SearchRequest
@@ -57,7 +57,7 @@ class ProductsServiceV2(val vectorStore: VectorStore, val repository: ProductRep
         return returnAll(query, pageRequest)
     }
 
-    override fun create(request: MergeProductRequest): Product {
+    override fun create(request: CreateProductRequest): Product {
         val product = request.mapTo()
 
         val document = Document(product.id, product.description, mapOf(Pair("title", product.title),
@@ -68,7 +68,7 @@ class ProductsServiceV2(val vectorStore: VectorStore, val repository: ProductRep
         return repository.save(product)
     }
 
-    override fun update(id: String, request: MergeProductRequest): Product {
+    override fun update(id: String, request: CreateProductRequest): Product {
         deleteById(id)
         return create(request)
     }

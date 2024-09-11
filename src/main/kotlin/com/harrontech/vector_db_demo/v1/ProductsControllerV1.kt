@@ -2,7 +2,7 @@ package com.harrontech.vector_db_demo.v1
 
 import com.harrontech.vector_db_demo.ControllerVersion
 import com.harrontech.vector_db_demo.ProductsController
-import com.harrontech.vector_db_demo.dto.MergeProductRequest
+import com.harrontech.vector_db_demo.dto.CreateProductRequest
 import com.harrontech.vector_db_demo.dto.GetPagedProductResponse
 import com.harrontech.vector_db_demo.dto.GetProductResponse
 import com.harrontech.vector_db_demo.dto.QueryRequest
@@ -24,13 +24,13 @@ class ProductsControllerV1(val service: ProductsServiceV1): ProductsController {
         return GetPagedProductResponse.mapFrom(product, query.page, query.size)
     }
 
-    override fun create(request: MergeProductRequest): GetProductResponse {
+    override fun create(request: CreateProductRequest): GetProductResponse {
         val product = service.create(request)
         return GetProductResponse.mapFrom(product)
     }
 
     override fun update(@PathVariable id: String,
-                        @RequestBody request: MergeProductRequest): GetProductResponse {
+                        @RequestBody request: CreateProductRequest): GetProductResponse {
         val product = service.update(id, request)
         return GetProductResponse.mapFrom(product)
     }

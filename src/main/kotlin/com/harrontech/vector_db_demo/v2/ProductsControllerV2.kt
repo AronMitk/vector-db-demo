@@ -4,7 +4,7 @@ import com.harrontech.vector_db_demo.ControllerVersion
 import com.harrontech.vector_db_demo.ProductsController
 import com.harrontech.vector_db_demo.dto.GetPagedProductResponse
 import com.harrontech.vector_db_demo.dto.GetProductResponse
-import com.harrontech.vector_db_demo.dto.MergeProductRequest
+import com.harrontech.vector_db_demo.dto.CreateProductRequest
 import com.harrontech.vector_db_demo.dto.QueryRequest
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -22,12 +22,12 @@ class ProductsControllerV2(val service: ProductsServiceV2): ProductsController {
         return GetPagedProductResponse.mapFromWithPoints(product, query.page, query.size)
     }
 
-    override fun create(request: MergeProductRequest): GetProductResponse {
+    override fun create(request: CreateProductRequest): GetProductResponse {
         val product = service.create(request)
         return GetProductResponse.mapFrom(product)
     }
 
-    override fun update(id: String, request: MergeProductRequest): GetProductResponse {
+    override fun update(id: String, request: CreateProductRequest): GetProductResponse {
         val product = service.update(id, request)
         return GetProductResponse.mapFrom(product)
     }

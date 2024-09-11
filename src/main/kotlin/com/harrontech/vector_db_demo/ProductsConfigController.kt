@@ -1,7 +1,7 @@
 package com.harrontech.vector_db_demo
 
 import com.harrontech.vector_db_demo.dto.GetProductResponse
-import com.harrontech.vector_db_demo.dto.MergeProductRequest
+import com.harrontech.vector_db_demo.dto.CreateProductRequest
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -17,26 +17,26 @@ class ProductsConfigController(val controllers: List<ProductsController>) {
         val controller = controllers.first { it.getVersion() == version }
 
         val foods = listOf(
-            MergeProductRequest("Apple", "A sweet, edible fruit that is one of the most popular fruits worldwide.", "Fruit"),
-            MergeProductRequest("Banana", "A long, curved fruit that grows in clusters and has soft pulpy flesh.", "Fruit"),
-            MergeProductRequest("Carrot", "A root vegetable that is often claimed to be the perfect health food. It is crunchy, tasty and highly nutritious.", "Vegetable"),
-            MergeProductRequest("Date", "A sweet, dark brown oval fruit that is a great source of fiber, rich in vitamins and minerals.", "Fruit"),
-            MergeProductRequest("Eggplant", "Also known as aubergine or brinjal, it's a purple, egg-shaped vegetable which is used in cuisines worldwide.", "Vegetable"),
-            MergeProductRequest("Fig", "A sweet, pear-shaped fruit that is full of small seeds and often eaten dried.", "Fruit"),
-            MergeProductRequest("Grapes", "A small, round green or purple fruit that is a good source of antioxidants, vitamin C and potassium.", "Fruit"),
-            MergeProductRequest("Honeydew", "A sweet, juicy melon that has a sweet, slightly tangy flavor.", "Fruit"),
-            MergeProductRequest("Iceberg Lettuce", "A round type of lettuce known for its mild flavor and firm, crunchy texture.", "Vegetable"),
-            MergeProductRequest("Jackfruit", "A large, tropical fruit with a spiky rind. The flesh is yellow and sweet, often used as a meat substitute in vegetarian cuisine.", "Fruit"),
-            MergeProductRequest("Kale", "A type of cabbage with green or purple leaves. It is among the most nutrient dense foods on the planet.", "Vegetable"),
-            MergeProductRequest("Lemon", "A yellow, sour fruit used for culinary and non-culinary purposes throughout the world.", "Fruit"),
-            MergeProductRequest("Mango", "Known as the king of the fruits, it is a tropical fruit with sweet, yellow flesh.", "Fruit"),
-            MergeProductRequest("Nectarine", "A smooth-skinned variety of peach. It is a delicious summer fruit.", "Fruit"),
-            MergeProductRequest("Orange", "Known for its tangy sweet taste, it is a citrus fruit that is a good source of Vitamin C.", "Fruit"),
-            MergeProductRequest("Peach", "A round, sweet fruit with fuzzy, pinkish-yellow skin. It's also a good source of vitamins A and C.", "Fruit"),
-            MergeProductRequest("Quince", "A yellow, hard fruit used in cooking to make jams, jellies and preserves.", "Fruit"),
-            MergeProductRequest("Raspberry", "A small, red, sweet fruit often used in jams and desserts. It is high in fiber, vitamin C and manganese.", "Fruit"),
-            MergeProductRequest("Strawberry", "A sweet, red fruit with a seed-studded surface. It is highly popular for its delicious taste and for its nutritional benefits.", "Fruit"),
-            MergeProductRequest("Tomato", "A juicy, red fruit often used in salads and sauces. It is rich in vitamin C, potassium, folate, and vitamin K.", "Vegetable")
+            CreateProductRequest("Apple", "A sweet, edible fruit that is one of the most popular fruits worldwide.", "Fruit"),
+            CreateProductRequest("Banana", "A long, curved fruit that grows in clusters and has soft pulpy flesh.", "Fruit"),
+            CreateProductRequest("Carrot", "A root vegetable that is often claimed to be the perfect health food. It is crunchy, tasty and highly nutritious.", "Vegetable"),
+            CreateProductRequest("Date", "A sweet, dark brown oval fruit that is a great source of fiber, rich in vitamins and minerals.", "Fruit"),
+            CreateProductRequest("Eggplant", "Also known as aubergine or brinjal, it's a purple, egg-shaped vegetable which is used in cuisines worldwide.", "Vegetable"),
+            CreateProductRequest("Fig", "A sweet, pear-shaped fruit that is full of small seeds and often eaten dried.", "Fruit"),
+            CreateProductRequest("Grapes", "A small, round green or purple fruit that is a good source of antioxidants, vitamin C and potassium.", "Fruit"),
+            CreateProductRequest("Honeydew", "A sweet, juicy melon that has a sweet, slightly tangy flavor.", "Fruit"),
+            CreateProductRequest("Iceberg Lettuce", "A round type of lettuce known for its mild flavor and firm, crunchy texture.", "Vegetable"),
+            CreateProductRequest("Jackfruit", "A large, tropical fruit with a spiky rind. The flesh is yellow and sweet, often used as a meat substitute in vegetarian cuisine.", "Fruit"),
+            CreateProductRequest("Kale", "A type of cabbage with green or purple leaves. It is among the most nutrient dense foods on the planet.", "Vegetable"),
+            CreateProductRequest("Lemon", "A yellow, sour fruit used for culinary and non-culinary purposes throughout the world.", "Fruit"),
+            CreateProductRequest("Mango", "Known as the king of the fruits, it is a tropical fruit with sweet, yellow flesh.", "Fruit"),
+            CreateProductRequest("Nectarine", "A smooth-skinned variety of peach. It is a delicious summer fruit.", "Fruit"),
+            CreateProductRequest("Orange", "Known for its tangy sweet taste, it is a citrus fruit that is a good source of Vitamin C.", "Fruit"),
+            CreateProductRequest("Peach", "A round, sweet fruit with fuzzy, pinkish-yellow skin. It's also a good source of vitamins A and C.", "Fruit"),
+            CreateProductRequest("Quince", "A yellow, hard fruit used in cooking to make jams, jellies and preserves.", "Fruit"),
+            CreateProductRequest("Raspberry", "A small, red, sweet fruit often used in jams and desserts. It is high in fiber, vitamin C and manganese.", "Fruit"),
+            CreateProductRequest("Strawberry", "A sweet, red fruit with a seed-studded surface. It is highly popular for its delicious taste and for its nutritional benefits.", "Fruit"),
+            CreateProductRequest("Tomato", "A juicy, red fruit often used in salads and sauces. It is rich in vitamin C, potassium, folate, and vitamin K.", "Vegetable")
         )
 
         return foods.map { controller.create(it) }

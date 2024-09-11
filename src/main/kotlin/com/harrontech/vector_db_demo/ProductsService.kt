@@ -1,6 +1,6 @@
 package com.harrontech.vector_db_demo
 
-import com.harrontech.vector_db_demo.dto.MergeProductRequest
+import com.harrontech.vector_db_demo.dto.CreateProductRequest
 import com.harrontech.vector_db_demo.dto.QueryRequest
 
 interface ProductsService {
@@ -10,9 +10,9 @@ interface ProductsService {
 
     fun getByQueryWithPoints(query: QueryRequest): List<Pair<Product, Float>>
 
-    fun create(request: MergeProductRequest): Product
+    fun create(request: CreateProductRequest): Product
 
-    fun update(id: String, request: MergeProductRequest): Product
+    fun update(id: String, request: CreateProductRequest): Product
 
     fun deleteById(id: String)
 
